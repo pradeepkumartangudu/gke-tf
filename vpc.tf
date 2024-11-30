@@ -9,13 +9,13 @@ variable "region" {
   description = "region"
 }
 
-variable "GOOGLE_CREDENTIALS" {
+variable "GOOGLE_CREDENTIALS_BASE64" {
+  description = "Base64 encoded Google Cloud service account credentials"
   type        = string
-  description = "Base64-encoded JSON key of the Google Cloud service account"
 }
 
 provider "google" {
-  credentials = jsondecode(var.GOOGLE_CREDENTIALS)
+  credentials = jsondecode(base64decode(var.GOOGLE_CREDENTIALS_BASE64))
   project = var.project_id
   region  = var.region
 }
