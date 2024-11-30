@@ -22,6 +22,11 @@ data "google_container_engine_versions" "gke_version" {
   version_prefix = "1.27."
 }
 
+resource "google_project_service" "container_api" {
+  project = "${var.project_id}"  # Replace with your project ID
+  service = "container.googleapis.com"  # Kubernetes Engine API
+}
+
 resource "google_container_cluster" "primary" {
   name     = "${var.project_id}-gke"
   location = var.region
