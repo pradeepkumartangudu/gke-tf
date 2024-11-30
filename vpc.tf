@@ -15,7 +15,7 @@ variable "GOOGLE_CREDENTIALS" {
 }
 
 provider "google" {
-  credentials = jsondecode(base64decode(var.GOOGLE_CREDENTIALS))
+  credentials = jsondecode(var.GOOGLE_CREDENTIALS)
   project = var.project_id
   region  = var.region
 }
