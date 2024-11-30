@@ -28,6 +28,7 @@ resource "google_project_service" "container_api" {
 }
 
 resource "google_container_cluster" "primary" {
+  depends_on = [google_project_service.container_api]
   name     = "${var.project_id}-gke"
   location = var.region
 
