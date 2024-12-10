@@ -16,6 +16,7 @@ provider "google" {
 
 # VPC
 resource "google_compute_network" "vpc" {
+  depends_on = [google_project_service.container_api]
   name                    = "${var.project_id}-vpc"
   auto_create_subnetworks = "false"
 }
