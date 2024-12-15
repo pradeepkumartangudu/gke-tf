@@ -48,7 +48,7 @@ resource "google_container_node_pool" "primary_nodes" {
   location   = var.region
   cluster    = google_container_cluster.primary.name
   
-  version = "1.31"
+  version = "1.30.6"
   node_count = var.gke_num_nodes
 
   node_config {
